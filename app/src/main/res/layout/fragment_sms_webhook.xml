@@ -1,20 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
-    <TextView
-        android:text="@string/frag_sms_webhook_input_user"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/loginInputUserLabel"
-        android:labelFor="@+id/loginInputUser" />
+        android:visibility="visible"
+        android:id="@+id/loginForm" >
 
-    <EditText
+        <!-- loginInputUser -->
+        <TextView
+            android:text="@string/frag_sms_webhook_input_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/loginInputUserLabel"
+            android:labelFor="@+id/loginInputUser" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text=""
+            android:ems="10"
+            android:id="@+id/loginInputUser"
+            android:layout_marginBottom="5pt"
+            android:layout_below="@+id/loginInputUserLabel" />
+
+        <!-- loginInputPassword -->
+        <TextView
+            android:text="@string/frag_sms_webhook_input_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/loginInputPasswordLabel"
+            android:labelFor="@+id/loginInputPassword"
+            android:layout_below="@+id/loginInputUser" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/loginInputPassword"
+            android:layout_marginBottom="5pt"
+            android:layout_below="@+id/loginInputPasswordLabel" />
+
+        <!-- loginBtn -->
+        <Button
+            android:text="@string/frag_sms_webhook_login_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/loginBtn"
+            android:layout_marginTop="5pt"
+            android:layout_below="@+id/loginInputPassword" />
+    </RelativeLayout>
+
+    <!-- login Loading 动画 -->
+    <!-- android:visibility="invisible" 关于显示和隐藏：http://blog.csdn.net/dao_1990/article/details/46809547-->
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text=""
-        android:ems="10"
-        android:id="@+id/loginInputUser" />
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:visibility="invisible"
+        android:id="@+id/loginLoading">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyle"
+            android:layout_height="wrap_content"
+            android:id="@+id/loginLoadingProgressBar"
+            android:layout_width="match_parent" />
+
+        <TextView
+            android:text="@string/frag_sms_webhook_login_loading_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/loginLoadingText"
+            android:gravity="center"
+            android:layout_below="@+id/loginLoadingProgressBar"
+            android:layout_marginTop="15dp" />
+    </RelativeLayout>
+
 </LinearLayout>

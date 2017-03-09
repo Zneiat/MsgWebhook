@@ -1,10 +1,13 @@
 package com.qwqaq.msgwebhook;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,12 +18,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.qwqaq.msgwebhook.Fragment.FragmentSmsWebhook;
+import com.qwqaq.msgwebhook.Fragment.*;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private Context context;
+    private boolean firstOnCreate = true;
+    private int mainContent;
     private FragmentManager fm;
+    private FragmentHome fmHome;
     private FragmentSmsWebhook fmSmshook;
 
     @Override
@@ -32,8 +38,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
         // 初始化变量
         context = this;
+        mainContent = R.id.main_content;
         fm = getSupportFragmentManager(); // FragmentManager
         // 可爱的 Frag 们
+        fmHome = new FragmentHome();
         fmSmshook = new FragmentSmsWebhook();
         // 悬浮按钮
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -53,6 +61,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // 侧滑菜单视图
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        fm.beginTransaction().replace(mainContent, fmHome).commit();
+        /*Log.i("哈哈哈",fm.getClass().getName());*/
+        /**
+         * [NOTICE] fm.beginTransaction().addToBackStack(null).replace(mainContent, fmHome).commit();
+         * .addToBackStack(null) 在程序最开始运行时就不必用了 不然想退出程序 必须按两次返回键 ┌(。Д。)┐
+         * BackStack 返回栈
+         */
     }
 
     /**
@@ -66,8 +83,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
             super.onBackPressed();
         }
-        // 设置标题
-        this.setTitle(R.string.app_name);
     }
 
     @Override
@@ -98,8 +113,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_sms_webhook) {
-            fm.beginTransaction().addToBackStack(null).replace(R.id.main_content, fmSmshook).commit();
+        if (id == R.id.nav_home){
+            fm.beginTransaction().replace(mainContent, fmHome).commit();
+        } else if (id == R.id.nav_sms_webhook) {
+            fm.beginTransaction().replace(mainContent, fmSmshook).commit();
         }/* else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {

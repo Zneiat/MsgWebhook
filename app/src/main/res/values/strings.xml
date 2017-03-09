@@ -13,5 +13,7 @@
     <string name="frag_sms_webhook">SMS WebHook</string>
     <string name="frag_sms_webhook_input_user">手机号</string>
     <string name="frag_sms_webhook_input_password">密码</string>
+    <string name="frag_sms_webhook_login_btn">登录</string>
+    <string name="frag_sms_webhook_login_loading_text">正在等待服务器响应</string>
 
 </resources>
