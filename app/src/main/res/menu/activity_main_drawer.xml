@@ -13,6 +13,4 @@
             android:title="@string/menu_sms_webhook" />
     </group>
 
-
-
 </menu>
