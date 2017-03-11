@@ -59,7 +59,7 @@ public class FragmentLogin extends Fragment {
     public void loginBtnAction(View view){
         // 收起输入法
         ((MainActivity) getActivity()).nowHideImm();
-        
+
         HttpReqUtil ha = new HttpReqUtil();
         ha.run(loginInputUser.getText().toString(), loginInputPassword.getText().toString(), new StringCallback(){
             @Override
