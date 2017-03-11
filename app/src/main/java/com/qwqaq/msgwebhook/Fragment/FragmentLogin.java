@@ -3,14 +3,22 @@ package com.qwqaq.msgwebhook.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
+import com.qwqaq.msgwebhook.HttpReqUtil;
+import com.qwqaq.msgwebhook.MainActivity;
 import com.qwqaq.msgwebhook.R;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import okhttp3.Call;
+import okhttp3.Request;
 
 /**
  * Created by Zneia on 2017/3/5.
@@ -18,7 +26,7 @@ import com.qwqaq.msgwebhook.R;
 
 public class FragmentLogin extends Fragment {
 
-    private View view;
+    private View pragmentView;
     private EditText loginInputUser;
     private EditText loginInputPassword;
     private Button loginBtn;
@@ -28,26 +36,59 @@ public class FragmentLogin extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         getActivity().setTitle(R.string.frag_login); // 设置标题
 
-        view  =  inflater.inflate(R.layout.fragment_login, container, false);
-        loginInputUser = (EditText) view.findViewById(R.id.loginInputUser);
-        loginInputPassword = (EditText) view.findViewById(R.id.loginInputPassword);
+        pragmentView  =  inflater.inflate(R.layout.fragment_login, container, false);
+        loginInputUser = (EditText) pragmentView.findViewById(R.id.loginInputUser);
+        loginInputPassword = (EditText) pragmentView.findViewById(R.id.loginInputPassword);
 
         // 第一种方式
-        loginBtn = (Button)view.findViewById(R.id.loginBtn);//获取按钮资源
+        loginBtn = (Button)pragmentView.findViewById(R.id.loginBtn);//获取按钮资源
         loginBtn.setOnClickListener(new Button.OnClickListener(){//创建监听
             public void onClick(View view) {
                 loginBtnAction(view);
             }
 
         });
-        return view;
+        return pragmentView;
     }
 
+
+    private String result = "";
     /**
      * 登录按钮操作
      */
     public void loginBtnAction(View view){
-        loadingUi("show");
+        // 收起输入法
+        ((MainActivity) getActivity()).nowHideImm();
+        
+        HttpReqUtil ha = new HttpReqUtil();
+        ha.run(loginInputUser.getText().toString(), loginInputPassword.getText().toString(), new StringCallback(){
+            @Override
+            public void onBefore(Request request, int id) {
+                loadingUi("show");
+                /*Toast.makeText(getActivity(), "loading...", Toast.LENGTH_SHORT).show();*/
+            }
+
+            @Override
+            public void onAfter(int id) {
+                /*Toast.makeText(getActivity(), "请求完毕", Toast.LENGTH_SHORT).show();*/
+            }
+
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                e.printStackTrace();
+                result = "请求错误:\n" + e.getMessage();
+                EditText en = (EditText) pragmentView.findViewById(R.id.LoginReqResult);
+                en.setText(result.toCharArray(), 0, result.length());
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                loadingUi("hide");
+                result = "响应结果：\n" + response;
+                EditText en = (EditText) pragmentView.findViewById(R.id.LoginReqResult);
+                en.setText(result.toCharArray(), 0, result.length());
+            }
+        });
     }
 
     /**
@@ -55,8 +96,8 @@ public class FragmentLogin extends Fragment {
      * @param type 改变状态
      */
     public void loadingUi(String type){
-        RelativeLayout loginForm = (RelativeLayout) view.findViewById(R.id.loginForm);
-        RelativeLayout loading = (RelativeLayout) view.findViewById(R.id.loginLoading);
+        RelativeLayout loginForm = (RelativeLayout) pragmentView.findViewById(R.id.loginForm);
+        RelativeLayout loading = (RelativeLayout) pragmentView.findViewById(R.id.loginLoading);
         if(type.equals("show")){
             // 显示加载
             loading.setVisibility(View.VISIBLE);

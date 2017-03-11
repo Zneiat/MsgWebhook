@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.qwqaq.msgwebhook">
 
+    <!-- 权限 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 网络 -->
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,7 +20,16 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <!-- SMS 监测 -->
+            <!--<receiver android:name=".SMSReceiver">
+                <intent-filter android:priority="1000">
+                    <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+                </intent-filter>
+            </receiver>-->
         </activity>
     </application>
-
+    <!-- 权限 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
 </manifest>

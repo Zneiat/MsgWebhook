@@ -12,7 +12,7 @@
     <!-- item Text Color Change: R.color.navigation_menu_item_color -->
 
     <!-- 登录 Fragment -->
-    <color name="colorFragmentBigBtnBg">#1e88e5</color>
+    <color name="colorFragmentBigBtnBg">#00a2ed</color>
     <color name="colorFragmentBigBtnText">#FFFFFF</color>
 
 </resources>

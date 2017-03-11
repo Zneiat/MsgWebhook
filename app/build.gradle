@@ -26,5 +26,11 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.0.1'
     compile 'com.android.support:design:25.0.1'
+
+    compile 'com.zhy:okhttputils:2.6.2'
+    compile 'com.google.code.gson:gson:2.4'
+    compile 'com.squareup.okhttp3:okhttp-urlconnection:3.2.0'
+    compile 'com.github.franmontiel:PersistentCookieJar:v0.9.3'
+
     testCompile 'junit:junit:4.12'
 }
