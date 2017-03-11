@@ -3,4 +3,16 @@
     <color name="colorPrimary">#00a2ed</color>
     <color name="colorPrimaryDark">#1976d2</color>
     <color name="colorAccent">#00a2ed</color>
+
+    <!-- 侧滑菜单 -->
+    <color name="colorNavBg">#1a8af9</color>
+    <color name="colorNavHeaderBg">#00a2ed</color>
+    <color name="colorNavHeaderLoginBarBg">#1e88e5</color>
+    <color name="colorNavHeaderLoginBarTextColor">#FFFFFF</color>
+    <!-- item Text Color Change: R.color.navigation_menu_item_color -->
+
+    <!-- 登录 Fragment -->
+    <color name="colorFragmentBigBtnBg">#1e88e5</color>
+    <color name="colorFragmentBigBtnText">#FFFFFF</color>
+
 </resources>

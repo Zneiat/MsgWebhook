@@ -3,11 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="170dp"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorNavHeaderBg"
     android:gravity="bottom"
     android:orientation="vertical"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    android:paddingBottom="@dimen/design_navigation_separator_vertical_padding">
+    <!-- android:paddingBottom="..." 修改间距
+         activity_main.xml 侧滑菜单 headerLayout 和 menu
+         http://stackoverflow.com/questions/30584554/how-i-can-remove-the-unnecessary-top-padding-of-the-navigation-view -->
+
     <!--
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -39,7 +44,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="收到消息自动发送给服务器"
+            android:text="@string/app_desc"
             android:layout_below="@+id/navHeaderAppName"/>
 
     </RelativeLayout>
@@ -56,14 +61,14 @@
 
         <!-- 登录按钮 -->
         <Button
-            android:text="登录"
+            android:text="@string/nav_header_login_btn"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/navHeaderLoginBtn"
-            android:background="@null"
+            android:background="@drawable/btn_water_ripples"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorNavHeaderLoginBarTextColor"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             />
@@ -84,14 +89,14 @@
 
         <!-- 注册按钮 -->
         <Button
-            android:text="注册"
+            android:text="@string/nav_header_signup_btn"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/navHeaderSignupBtn"
-            android:background="@null"
+            android:background="@drawable/btn_water_ripples"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorNavHeaderLoginBarTextColor"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin" />
     </LinearLayout>
