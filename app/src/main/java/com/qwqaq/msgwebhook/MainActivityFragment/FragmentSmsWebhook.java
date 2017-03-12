@@ -1,15 +1,11 @@
-package com.qwqaq.msgwebhook.Fragment;
+package com.qwqaq.msgwebhook.MainActivityFragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
 
 import com.qwqaq.msgwebhook.R;
 
@@ -26,7 +22,7 @@ public class FragmentSmsWebhook extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         getActivity().setTitle(R.string.frag_sms_webhook); // 设置标题
 
-        view  =  inflater.inflate(R.layout.fragment_sms_webhook, container, false);
+        view  =  inflater.inflate(R.layout.main_activity_fragment_sms_webhook, container, false);
 
         return view;
     }

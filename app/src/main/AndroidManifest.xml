@@ -10,7 +10,10 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name="com.qwqaq.msgwebhook.ContextUtil">
+        <!-- 上面 加那个 android:name 是为了能够全局获取到程序的 Context -->
+        <!-- 主 Activity -->
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -26,6 +29,11 @@
                     <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
                 </intent-filter>
             </receiver>-->
+        </activity>
+        <!-- 登录 Activity -->
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/login">
         </activity>
     </application>
     <!-- 权限 -->

@@ -55,7 +55,9 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/colorPrimaryDark"
+        android:visibility="visible"
+        android:id="@+id/main_activity_sidebar_header_login_bar">
 
         <!-- LinearLayout 里的各个元素设置 android:layout_weight="1" 有意想不到的效果 -->
 
@@ -99,6 +101,32 @@
             android:textColor="@color/colorNavHeaderLoginBarTextColor"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin" />
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/colorPrimaryDark"
+            android:visibility="gone"
+            android:id="@+id/main_activity_sidebar_header_logined_bar">
+
+        <!-- 注销按钮 -->
+        <Button
+                android:text="@string/nav_header_logout_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/navHeaderLogout"
+                android:background="@drawable/btn_water_ripples"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:maxEms="11"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textColor="@color/colorNavHeaderLoginBarTextColor"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin" />
     </LinearLayout>
 
 </LinearLayout>

@@ -1,4 +1,5 @@
 <resources>
+    <!-- Main Activity -->
     <string name="app_name">消息 WebHook</string>
     <string name="app_desc">收到消息自动发送给服务器</string>
 
@@ -12,6 +13,7 @@
     <!-- Nav Header -->
     <string name="nav_header_login_btn">登录</string>
     <string name="nav_header_signup_btn">注册</string>
+    <string name="nav_header_logout_btn">注销</string>
 
     <!-- Fragments -->
     <string name="frag_sms_webhook">SMS WebHook</string>
@@ -21,4 +23,7 @@
     <string name="frag_sms_webhook_login_loading_text">正在等待服务器响应</string>
 
     <string name="frag_login">登录</string>
+
+    <!-- Login Activity -->
+    <string name="login">登录</string>
 </resources>

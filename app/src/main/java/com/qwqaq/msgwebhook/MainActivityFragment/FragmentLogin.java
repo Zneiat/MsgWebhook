@@ -1,16 +1,14 @@
-package com.qwqaq.msgwebhook.Fragment;
+package com.qwqaq.msgwebhook.MainActivityFragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.qwqaq.msgwebhook.HttpReqUtil;
 import com.qwqaq.msgwebhook.MainActivity;
@@ -36,7 +34,7 @@ public class FragmentLogin extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         getActivity().setTitle(R.string.frag_login); // 设置标题
 
-        pragmentView  =  inflater.inflate(R.layout.fragment_login, container, false);
+        pragmentView  =  inflater.inflate(R.layout.main_activity_fragment_login, container, false);
         loginInputUser = (EditText) pragmentView.findViewById(R.id.loginInputUser);
         loginInputPassword = (EditText) pragmentView.findViewById(R.id.loginInputPassword);
 
@@ -58,7 +56,7 @@ public class FragmentLogin extends Fragment {
      */
     public void loginBtnAction(View view){
         // 收起输入法
-        ((MainActivity) getActivity()).nowHideImm();
+        ((MainActivity) getActivity()).hideImm();
 
         HttpReqUtil ha = new HttpReqUtil();
         ha.run(loginInputUser.getText().toString(), loginInputPassword.getText().toString(), new StringCallback(){
